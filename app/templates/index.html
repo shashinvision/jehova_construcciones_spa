@@ -56,10 +56,7 @@
                         Años de experiencia en construcción y remodelaciones de
                         calidad
                     </p>
-                    <a href="#contacto" class="btn-primary"
-                        >Cotiza tu Proyecto</a
-                    >
-                    >
+                    <a href="#contacto">Cotiza tu Proyecto</a>
                 </article>
             </section>
 
@@ -299,10 +296,7 @@
                                     rows="5"
                                     required
                                 ></textarea>
-                                <button
-                                    type="submit"
-                                    class="btn-primary"
-                                >
+                                <button type="submit" class="btn-primary">
                                     Enviar Mensaje
                                 </button>
                             </form>
@@ -343,30 +337,36 @@
 
         <footer>
             <div class="container">
-                <div style="text-align: center;">
+                <div style="text-align: center">
                     <h3>Jehova Construcciones</h3>
-                    <p>
-                        Construyendo confianza, edificando futuros.
-                    </p>
+                    <p>Construyendo confianza, edificando futuros.</p>
                 </div>
 
                 <hr />
-                <p style="text-align: center;">
+                <p style="text-align: center">
                     &copy; 2026 Jehova Construcciones. Todos los derechos
                     reservados.
                 </p>
             </div>
         </footer>
         <script>
-            document.querySelector('.nav-toggle').addEventListener('click', function() {
-                document.querySelector('.nav-menu').classList.toggle('active');
-                this.classList.toggle('active');
-            });
-            
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    document.querySelector('.nav-menu').classList.remove('active');
-                    document.querySelector('.nav-toggle').classList.remove('active');
+            document
+                .querySelector(".nav-toggle")
+                .addEventListener("click", function () {
+                    document
+                        .querySelector(".nav-menu")
+                        .classList.toggle("active");
+                    this.classList.toggle("active");
+                });
+
+            document.querySelectorAll(".nav-menu a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    document
+                        .querySelector(".nav-menu")
+                        .classList.remove("active");
+                    document
+                        .querySelector(".nav-toggle")
+                        .classList.remove("active");
                 });
             });
         </script>
