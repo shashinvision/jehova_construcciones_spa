@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+    <html lang="es" data-theme="light">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jehova Construcciones</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/pico_css/pico.min.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
+    <body>
+        <header class="container-fluid">
+            <nav>
+                <ul>
+                    <li><strong>Jehova Construcciones</strong></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <h1>Jehova Construcciones</h1>
+                    <p>Construyendo tus sueños con calidad y profesionalismo</p>
+                    <a href="#contacto" role="button">Contáctanos</a>
+                </div>
+            </section>
+
+            <section id="servicios" class="container">
+                <h2>Nuestros Servicios</h2>
+                <div class="grid">
+                    <article class="service-card">
+                        <h3>Construcción Residencial</h3>
+                        <p>
+                            Casas, departamentos y desarrollos inmobiliarios de
+                            alta calidad.
+                        </p>
+                    </article>
+                    <article class="service-card">
+                        <h3>Construcción Comercial</h3>
+                        <p>
+                            Oficinas, locales comerciales y proyectos
+                            empresariales.
+                        </p>
+                    </article>
+                    <article class="service-card">
+                        <h3>Remodelaciones</h3>
+                        <p>Renovación y ampliación de espacios existentes.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contacto" class="container">
+                <h2>Contacto</h2>
+                <form>
+                    <div class="grid">
+                        <input
+                            type="text"
+                            name="nombre"
+                            placeholder="Nombre"
+                            required
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            required
+                        />
+                    </div>
+                    <input type="tel" name="telefono" placeholder="Teléfono" />
+                    <textarea
+                        name="mensaje"
+                        placeholder="Mensaje"
+                        rows="4"
+                        required
+                    ></textarea>
+                    <button type="submit">Enviar Mensaje</button>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>
+                    &copy; 2026 Jehova Construcciones. Todos los derechos
+                    reservados.
+                </p>
+                <p>
+                    Teléfono: (123) 456-7890 | Email:
+                    info@jehovaconstrucciones.com
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>
