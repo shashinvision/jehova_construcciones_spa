@@ -1,104 +1,415 @@
 <!doctype html>
-<html lang="es">
-    <html lang="es" data-theme="light">
+<html lang="es" data-theme="light">
+    <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Jehova Construcciones</title>
-        <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='css/pico_css/pico.min.css') }}"
-        />
-        <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='css/style.css') }}"
-        />
+        <title>Jehova Construcciones | Construcciones y Remodelaciones</title>
+        <meta name="description" content="Jehova Construcciones - Empresa líder en construcción residencial, comercial y remodelaciones. Calidad y profesionalismo en cada proyecto." />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.conditional.min.css" />
+        <style>
+            :root {
+                --primary: #d97706;
+                --primary-hover: #b45309;
+                --primary-underline: rgba(217, 119, 6, 0.5);
+                --background: #fafafa;
+                --surface: #ffffff;
+                --surface-hover: #f5f5f5;
+            }
+
+            [data-theme="dark"] {
+                --background: #0f0f0f;
+                --surface: #1a1a1a;
+                --surface-hover: #262626;
+            }
+
+            body {
+                background-color: var(--background);
+            }
+
+            .hero {
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                            url('https://images.unsplash.com/photo-1541976590-713941681591?w=1920&q=80');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                min-height: 80vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0;
+            }
+
+            .hero article {
+                background: transparent;
+                color: white;
+                max-width: 800px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+                margin-bottom: 0.5rem;
+                color: white;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+                color: rgba(255, 255, 255, 0.9);
+            }
+
+            .hero .btn-primary {
+                background-color: var(--primary);
+                border-color: var(--primary);
+                margin-top: 1rem;
+            }
+
+            .hero .btn-primary:hover {
+                background-color: var(--primary-hover);
+                border-color: var(--primary-hover);
+            }
+
+            .services {
+                padding: 4rem 0;
+            }
+
+            .service-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                border: 1px solid #e5e5e5;
+                background: var(--surface);
+            }
+
+            [data-theme="dark"] .service-card {
+                border-color: #333;
+            }
+
+            .service-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .service-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .features {
+                background-color: var(--surface);
+                padding: 4rem 0;
+            }
+
+            .feature-item {
+                text-align: center;
+                padding: 2rem;
+            }
+
+            .feature-icon {
+                width: 80px;
+                height: 80px;
+                background-color: var(--primary);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1rem;
+                font-size: 2rem;
+                color: white;
+            }
+
+            .projects {
+                padding: 4rem 0;
+            }
+
+            .project-card {
+                position: relative;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+
+            .project-card img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+            .project-card:hover img {
+                transform: scale(1.05);
+            }
+
+            .project-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+                padding: 1.5rem;
+                color: white;
+            }
+
+            .about {
+                background-color: var(--surface);
+                padding: 4rem 0;
+            }
+
+            .contact {
+                padding: 4rem 0;
+            }
+
+            .contact-form {
+                background: var(--surface);
+                padding: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            [data-theme="dark"] .contact-form {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            footer {
+                background-color: #1a1a1a;
+                color: white;
+                padding: 3rem 0;
+                margin-top: 0;
+            }
+
+            footer a {
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            footer a:hover {
+                color: var(--primary);
+            }
+
+            .nav-logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary) !important;
+            }
+
+            @media (max-width: 768px) {
+                .hero h1 {
+                    font-size: 2rem;
+                }
+                .hero p {
+                    font-size: 1rem;
+                }
+            }
+        </style>
     </head>
     <body>
         <header class="container-fluid">
             <nav>
                 <ul>
-                    <li><strong>Jehova Construcciones</strong></li>
+                    <li><a href="#" class="nav-logo">JEHOVA <span style="color: white;">CONSTRUCCIONES</span></a></li>
                 </ul>
                 <ul>
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto" role="button" class="outline">Contacto</a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
-            <section class="hero">
-                <div class="container">
+            <section id="inicio" class="hero">
+                <article>
                     <h1>Jehova Construcciones</h1>
-                    <p>Construyendo tus sueños con calidad y profesionalismo</p>
-                    <a href="#contacto" role="button">Contáctanos</a>
-                </div>
+                    <p>Construyendo confianza, edificando futuros</p>
+                    <p>Más de 20 años de experiencia en construcción y remodelaciones de calidad</p>
+                    <a href="#contacto" class="btn-primary">Cotiza tu Proyecto</a>
+                </article>
             </section>
 
-            <section id="servicios" class="container">
-                <h2>Nuestros Servicios</h2>
+            <section id="servicios" class="services container">
+                <h2 style="text-align: center; margin-bottom: 3rem;">Nuestros Servicios</h2>
                 <div class="grid">
                     <article class="service-card">
+                        <div class="service-icon">🏠</div>
                         <h3>Construcción Residencial</h3>
-                        <p>
-                            Casas, departamentos y desarrollos inmobiliarios de
-                            alta calidad.
-                        </p>
+                        <p>Casas, departamentos y desarrollos inmobiliarios construidos con los más altos estándares de calidad y seguridad.</p>
                     </article>
                     <article class="service-card">
+                        <div class="service-icon">🏢</div>
                         <h3>Construcción Comercial</h3>
-                        <p>
-                            Oficinas, locales comerciales y proyectos
-                            empresariales.
-                        </p>
+                        <p>Oficinas, locales comerciales, naves industriales y proyectos empresariales adaptados a tus necesidades.</p>
                     </article>
                     <article class="service-card">
+                        <div class="service-icon">🔧</div>
                         <h3>Remodelaciones</h3>
-                        <p>Renovación y ampliación de espacios existentes.</p>
+                        <p>Renovación y ampliación de espacios existentes. Transformamos tu propiedad en el espacio que siempre has soñado.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">📐</div>
+                        <h3>Diseño y Arquitectura</h3>
+                        <p>Proyectos arquitectónicos, planos y diseños personalizados para tu construcción o remodelación.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">🛡️</div>
+                        <h3>Obras Menores</h3>
+                        <p>Reparaciones, mantenimientos y obras menores para hogares y empresas.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">💼</div>
+                        <h3>Asesoría Técnica</h3>
+                        <p>Consultoría profesional en construcción, presupuestos y gestión de obras.</p>
                     </article>
                 </div>
             </section>
 
-            <section id="contacto" class="container">
-                <h2>Contacto</h2>
-                <form>
+            <section class="features">
+                <div class="container">
+                    <h2 style="text-align: center; margin-bottom: 3rem;">¿Por Qué Elegirnos?</h2>
                     <div class="grid">
-                        <input
-                            type="text"
-                            name="nombre"
-                            placeholder="Nombre"
-                            required
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            required
-                        />
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <h3>Profesionalismo</h3>
+                            <p>Equipo capacitado y experimentado en todos los aspectos de la construcción</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">⏱</div>
+                            <h3>Puntualidad</h3>
+                            <p>Cumplimiento de plazos acordados en cada proyecto</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">💰</div>
+                            <h3>Precios Justos</h3>
+                            <p>Presupuestos transparentes y competitivos sin costos ocultos</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🏆</div>
+                            <h3>Calidad Garantizada</h3>
+                            <p>Materiales de primera y acabados de excelencia en cada obra</p>
+                        </div>
                     </div>
-                    <input type="tel" name="telefono" placeholder="Teléfono" />
-                    <textarea
-                        name="mensaje"
-                        placeholder="Mensaje"
-                        rows="4"
-                        required
-                    ></textarea>
-                    <button type="submit">Enviar Mensaje</button>
-                </form>
+                </div>
+            </section>
+
+            <section id="proyectos" class="projects container">
+                <h2 style="text-align: center; margin-bottom: 3rem;">Proyectos Recientes</h2>
+                <div class="grid">
+                    <article class="project-card">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Casa residencial" />
+                        <div class="project-overlay">
+                            <h3>Casa Residencial</h3>
+                            <p>Construcción completa</p>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Edificio comercial" />
+                        <div class="project-overlay">
+                            <h3>Edificio Comercial</h3>
+                            <p>Oficinas y locales</p>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Remodelación" />
+                        <div class="project-overlay">
+                            <h3>Remodelación</h3>
+                            <p>Renovación integral</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="nosotros" class="about">
+                <div class="container">
+                    <div class="grid">
+                        <div>
+                            <h2>Sobre Jehova Construcciones</h2>
+                            <p>Somos una empresa dedicada a la construcción y remodelación con más de dos décadas de experiencia en el sector. Nuestro compromiso es entregar proyectos de la más alta calidad, cumpliendo con los estándares de seguridad y las expectativas de nuestros clientes.</p>
+                            <p>Nos especializamos en entender las necesidades de cada cliente para ofrecer soluciones personalizadas que se adapten a su presupuesto y visión.</p>
+                            <h3>Misión</h3>
+                            <p>Brindar servicios de construcción de calidad superior, construyendo relaciones duraderas basadas en la confianza y la satisfacción del cliente.</p>
+                            <h3>Visión</h3>
+                            <p>Ser la empresa de construcciones más recomendada en la región, reconocida por nuestra integridad, calidad y profesionalismo.</p>
+                        </div>
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Equipo de construcción" style="border-radius: 8px; width: 100%;" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="contact container">
+                <h2 style="text-align: center; margin-bottom: 3rem;">Contáctanos</h2>
+                <div class="grid">
+                    <div>
+                        <div class="contact-form">
+                            <h3>Solicita una Cotización</h3>
+                            <form>
+                                <div class="grid">
+                                    <input type="text" name="nombre" placeholder="Nombre completo" required />
+                                    <input type="email" name="email" placeholder="Correo electrónico" required />
+                                </div>
+                                <input type="tel" name="telefono" placeholder="Teléfono" />
+                                <select name="servicio" required>
+                                    <option value="" disabled selected>Tipo de servicio</option>
+                                    <option value="residencial">Construcción Residencial</option>
+                                    <option value="comercial">Construcción Comercial</option>
+                                    <option value="remodelacion">Remodelación</option>
+                                    <option value="diseno">Diseño y Arquitectura</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                <textarea name="mensaje" placeholder="Describe tu proyecto..." rows="5" required></textarea>
+                                <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Información de Contacto</h3>
+                        <article>
+                            <h4>📍 Dirección</h4>
+                            <p>Avenida Principal 123, Ciudad<br />México</p>
+                        </article>
+                        <article>
+                            <h4>📞 Teléfono</h4>
+                            <p>(55) 1234-5678</p>
+                        </article>
+                        <article>
+                            <h4>✉️ Correo</h4>
+                            <p>info@jehovaconstrucciones.com</p>
+                        </article>
+                        <article>
+                            <h4>🕐 Horario</h4>
+                            <p>Lunes a Viernes: 9:00 - 18:00<br />Sábado: 9:00 - 14:00</p>
+                        </article>
+                    </div>
+                </div>
             </section>
         </main>
 
         <footer>
             <div class="container">
-                <p>
-                    &copy; 2026 Jehova Construcciones. Todos los derechos
-                    reservados.
-                </p>
-                <p>
-                    Teléfono: (123) 456-7890 | Email:
-                    info@jehovaconstrucciones.com
-                </p>
+                <div class="grid">
+                    <div>
+                        <h3>Jehova Construcciones</h3>
+                        <p>Construyendo confianza, edificando futuros. Más de 20 años a tu servicio.</p>
+                    </div>
+                    <div>
+                        <h4>Enlaces Rápidos</h4>
+                        <ul>
+                            <li><a href="#inicio">Inicio</a></li>
+                            <li><a href="#servicios">Servicios</a></li>
+                            <li><a href="#proyectos">Proyectos</a></li>
+                            <li><a href="#contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Servicios</h4>
+                        <ul>
+                            <li><a href="#">Construcción Residencial</a></li>
+                            <li><a href="#">Construcción Comercial</a></li>
+                            <li><a href="#">Remodelaciones</a></li>
+                            <li><a href="#">Diseño Arquitectónico</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr />
+                <p style="text-align: center;">&copy; 2026 Jehova Construcciones. Todos los derechos reservados.</p>
             </div>
         </footer>
     </body>
