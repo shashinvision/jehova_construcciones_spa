@@ -171,6 +171,12 @@ a {
     text-decoration: none;
 }
 
+h3,
+.project-overlay p,
+h4 {
+    color: burlywood;
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2rem;
