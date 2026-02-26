@@ -24,13 +24,13 @@
                     <li>
                         <a href="#" class="nav-logo"
                             >JEHOVA
-                            <span style="color: burlywood"
+                            <span style="color: #d97706"
                                 >CONSTRUCCIONES</span
                             ></a
                         >
                     </li>
                 </ul>
-                <ul>
+                <ul class="nav-menu">
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#proyectos">Proyectos</a></li>
@@ -39,6 +39,11 @@
                         <a href="#contacto">Contacto</a>
                     </li>
                 </ul>
+                <button class="nav-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </header>
 
@@ -51,8 +56,9 @@
                         Años de experiencia en construcción y remodelaciones de
                         calidad
                     </p>
-                    <a href="#contacto" style="color: burlywood"
+                    <a href="#contacto" class="btn-primary"
                         >Cotiza tu Proyecto</a
+                    >
                     >
                 </article>
             </section>
@@ -296,11 +302,6 @@
                                 <button
                                     type="submit"
                                     class="btn-primary"
-                                    style="
-                                        background-color: burlywood;
-                                        border-color: sandybrown;
-                                        color: black;
-                                    "
                                 >
                                     Enviar Mensaje
                                 </button>
@@ -342,19 +343,32 @@
 
         <footer>
             <div class="container">
-                <div style="text-align: center; color: burlywood">
+                <div style="text-align: center;">
                     <h3>Jehova Construcciones</h3>
-                    <p style="color: burlywood">
+                    <p>
                         Construyendo confianza, edificando futuros.
                     </p>
                 </div>
 
                 <hr />
-                <p style="text-align: center; color: burlywood">
+                <p style="text-align: center;">
                     &copy; 2026 Jehova Construcciones. Todos los derechos
                     reservados.
                 </p>
             </div>
         </footer>
+        <script>
+            document.querySelector('.nav-toggle').addEventListener('click', function() {
+                document.querySelector('.nav-menu').classList.toggle('active');
+                this.classList.toggle('active');
+            });
+            
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav-menu').classList.remove('active');
+                    document.querySelector('.nav-toggle').classList.remove('active');
+                });
+            });
+        </script>
     </body>
 </html>
